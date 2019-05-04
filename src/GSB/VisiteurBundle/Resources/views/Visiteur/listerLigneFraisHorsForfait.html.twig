@@ -1,0 +1,29 @@
+{% extends "::base.html.twig" %} 
+	{% block head %}
+	<meta charset="utf-8"/>
+		<link rel="stylesheet" type="text/css" href="../css/..">
+	{% endblock %}
+	{% block body %}
+		<div class="text-center">
+			<a href="http://127.0.0.1:8000/">
+        		<img src="{{ asset('img/logo_big.png') }}" alt="GSB"/> 
+     		</a>
+		</div>
+		<table class="table-bordered table text-center">
+			<tr>
+				<th>Date</th>
+				<th>Libellé</th>
+				<th>Montant</th>
+				<th>Modifier</th>
+
+			</tr>
+			{% for value in result %}
+				<tr>
+					<td> {{ value.date|date('d-m-y') }} </td>
+					<td> {{ value.libelle }} </td>
+					<td> {{ value.montant }} </td>
+					<td>  <a href="/fichefrais/lignefraishorsforfait/modifier/{{value.id}}" class="btn btn-primary">Modifier</a> </td>
+					</tr>
+			{% endfor %}
+		</table>
+	{% endblock %}

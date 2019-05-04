@@ -1,0 +1,48 @@
+{% extends "::base.html.twig" %} 
+	{% block head %}
+	<meta charset="utf-8"/>
+	{% endblock %}
+	{% block body %}
+		<br>
+		<br>
+		<div class="text-center">
+			<a href="http://127.0.0.1:8000/">
+        		<img src="{{ asset('img/logo_big.png') }}" alt="GSB"/> 
+     		</a>
+		</div>
+		<center>
+			{{ form_start(form)}}
+			{{ form_label(form.date) }}
+			{{ form_widget(form.date, { 'attr': {'maxlength': '6','minlength':'6'} }) }}
+			<br>
+			{{form_end(form)}}
+		</center>
+		<br>
+		<br>
+		<table class="table-bordered table text-center">
+			<tr>
+				<th>Date (mois/année)</th>
+				<th>Nb justificatifs</th>
+				<th>Montant valide</th>
+				<th>Date modification</th>
+				<th>Voir</th>
+				<th>Modification</th>
+			</tr>
+			{% if result is defined %}
+				{% for value in result %}
+					<tr>
+						<td> {{ value.mois }} </td>
+						<td> {{ value.nbJustificatifs }} </td>
+						<td> {{ value.montantValide }} </td>
+						<td> {{ value.dateModif|date("d/m/Y") }} </td>
+						<td><a href="/fichefrais/consulter/LigneFF/{{value.id}}" class="btn btn-primary"> Ligne frais forfait</a>
+						<a href="/fichefrais/consulter/LigneFHF/{{value.id}}" class="btn btn-primary"> Ligne frais hors forfait</a> </td>
+
+						<td>  <a href="modifier/{{value.id}}" class="btn btn-primary"> Modifier</a> </td>
+					</tr>
+				{% endfor %}
+			{% endif %}
+
+		</table>
+	{% endblock %}
+	

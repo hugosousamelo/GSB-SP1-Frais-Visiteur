@@ -1,0 +1,39 @@
+{% extends "::base.html.twig" %}
+
+	{% block head %}
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" type="text/css" href="../css/..">
+	{% endblock %}
+	{% block body %}
+		<div>
+			<div class="text-center">
+			<a href="http://127.0.0.1:8000/">
+        		<img src="{{ asset('img/logo_big.png') }}" alt="GSB"/> 
+     		</a>
+			</div>
+			<div class="offset-2 col-8">
+
+				{{ form_start(form) }}
+					<h4>Connexion du visiteur</h4>
+					{{ form_errors(form) }}
+					<br>
+					<div>
+					{{ form_label(form.login) }}
+					{{ form_widget(form.login) }}
+
+					{{ form_label(form.mdp) }}
+					{{ form_widget(form.mdp) }}
+					</div>
+					<center><br>
+					<div class='btn'>
+					{{ form_widget(form.annuler) }}
+					</div>
+
+					<div class='btn'>
+					{{ form_widget(form.valider) }}
+					</div>
+					</center>
+				{{ form_end(form) }}
+			</div>
+		</div>
+	{% endblock %}

@@ -1,0 +1,27 @@
+{% extends "::base.html.twig" %} 
+	{% block head %}
+		<meta charset="utf-8"/>
+	{% endblock %}
+	{% block body %}
+		<div class="text-center">
+			<a href="http://127.0.0.1:8000/">
+        		<img src="{{ asset('img/logo_big.png') }}" alt="GSB"/> 
+     		</a>
+		</div>
+		<table class="table-bordered table text-center">
+			<tr>
+				<th>Date (mois/année)</th>
+				<th>Quantité</th>
+				<th>Frais forfait</th>
+				<th>Modifier</th>
+			</tr>
+			{% for value in result %}
+				<tr>
+					<td> {{ value.mois }} </td>
+					<td> {{ value.quantite }} </td>
+					<td> {{ value.fraisforfait.id }} </td>
+					<td>  <a href="/fichefrais/lignefraisforfait/modifier/{{value.id}}" class="btn btn-primary">Modifier</a> </td>
+				</tr>
+			{% endfor %}
+		</table>
+	{% endblock %}
