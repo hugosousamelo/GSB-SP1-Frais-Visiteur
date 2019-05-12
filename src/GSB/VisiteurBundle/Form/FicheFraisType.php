@@ -33,7 +33,7 @@ class FicheFraisType extends AbstractType
     $builder->add('id', TextType::class)
         ->add('mois', TextType::class)
         ->add('nbJustificatifs', IntegerType::class)
-        ->add('montantValide', MoneyType::class)
+        ->add('montantValide', IntegerType::class)
         ->add('visiteur', EntityType::class, array('class'=> 'GSBVisiteurBundle:Visiteur',
             'query_builder' => function (EntityRepository $er) use ($nom) {
             return $er->createQueryBuilder('v')
@@ -46,7 +46,7 @@ class FicheFraisType extends AbstractType
                 ,'placeholder' => '--- Choisir un visiteur ---'
                 ,'choice_label' => 'nom' ))
         ->add('etat', EntityType::class, array('class'=> Etat::class,'choice_label' => 'libelle'))
-        ->add('dateModif', DateType::class,array('years'=>range(1980,2030), 'format'=>'dd-MM-yyyy'))
+        ->add('dateModif', DateType::class, array('years'=>range(date('Y'),2010), 'format' => 'dd MM yyyy'))
         ->add('Annuler', ResetType::class)
         ->add('Enregistrer', SubmitType::class);
     }

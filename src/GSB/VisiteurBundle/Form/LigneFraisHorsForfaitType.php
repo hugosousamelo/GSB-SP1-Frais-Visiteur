@@ -31,8 +31,8 @@ class LigneFraisHorsForfaitType extends AbstractType
         $id = $session->get('id');
         
         $builder->add('libelle', TextType::class)
-            ->add('date', DateType::class,array('years'=>range(1980,2030)))
-            ->add('montant', MoneyType::class)
+            ->add('date', DateType::class, array('years'=>range(date('Y'),2010), 'format' => 'dd MM yyyy'))
+            ->add('montant', IntegerType::class)
             ->add('fichefrais', EntityType::class, array('class'=> 'GSBVisiteurBundle:FicheFrais',
                 'query_builder' => function (EntityRepository $ep) use ($id) {
                 return $ep->createQueryBuilder('v')

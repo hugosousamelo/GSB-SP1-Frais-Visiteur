@@ -19,7 +19,7 @@ class FraisForfaitType extends AbstractType
     {
         $builder->add('id', TextType::class)
             ->add('libelle', TextType::class)
-            ->add('montant', TextType::class)
+            ->add('montant', IntergerType::class)
             ->add('Enregistrer', SubmitType::class)
             ->add('Annuler', ResetType::class);
     }
